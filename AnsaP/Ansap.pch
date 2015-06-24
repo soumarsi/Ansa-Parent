@@ -1,0 +1,28 @@
+//
+//  Ansap.pch
+//  AnsaP
+//
+//  Created by anirban on 05/05/15.
+//  Copyright (c) 2015 anirban. All rights reserved.
+//
+
+#ifndef AnsaP_Ansap_pch
+#define AnsaP_Ansap_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import "NSString+MADanishLang.h"
+#import "NSString+MAfaraoselang.h"
+
+#define check_username @"Please enter valid email"
+#define check_password @"Please enter valid password"
+#define App_Domain_Url @"http://ansa.fo/iosapp/"
+#define App_Image_Url @"https://ansa.fo/upload/albums/normal/"
+#define check_internet_title @"sorry!"
+#define check_internet @"please check your internet connection"
+#define DebugLog(...) while(0)
+#define success @"success"
+#define Login_Failed @"invalid login credentials"
+#endif

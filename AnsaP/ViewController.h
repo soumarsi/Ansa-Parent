@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TGGlobal.h"
 
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController{
+
+    UIAlertView *Alert;
+
+}
+@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+- (IBAction)Login:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIView *spinn;
 
 @end
 
