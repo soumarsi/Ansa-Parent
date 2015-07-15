@@ -13,7 +13,27 @@
 @interface ViewController ()<UITextFieldDelegate>
 {
     TGGlobalClass *GlobalClass;
+    
+    NSMutableArray *kinderArray;
+    
+    IBOutlet UIVisualEffectView *kinderPickerBackView;
+    
+    IBOutlet UIPickerView *kinderPicekr;
+    
+    
+    IBOutlet UIButton *kinderPickerOkBtn;
+    
+    
+    IBOutlet UIButton *kinderPickerCnclBtn;
+    
+    
 }
+
+@property (strong, nonatomic) IBOutlet UIButton *selectKindergardenBtn;
+
+@property (strong, nonatomic) IBOutlet UILabel *selectKindergardenLbl;
+
+
 
 
 @end
@@ -25,6 +45,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     GlobalClass = [[TGGlobalClass alloc]init];
+    
+    kinderArray=[[NSMutableArray alloc]init];
+    
+    _selectKindergardenBtn.layer.opacity=0.9;
+    
+    
+    
+    kinderPicekr.hidden=YES;
     
 //   _email.text = @"aljo@olivant.fo";
 //  _password.text = @"123456";
@@ -40,6 +68,40 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (IBAction)kindergardenFunc:(id)sender
+{
+    
+    [GlobalClass GlobalDict:[NSString stringWithFormat:@"%@allkinder.php",App_Domain_Url] Globalstr:@"array" Withblock:^(id result, NSError *error) {
+        
+        
+        if(result)
+        {
+        
+            kinderArray=[result mutableCopy];
+            
+            NSLog(@"Kindergarden list.... %@",kinderArray);
+        
+        }
+        
+        
+    }];
+    
+    
+    
+}
+
+-(void)openKinderPicker
+{
+
+    
+    
+
+
+}
+
 
 - (IBAction)Login:(id)sender
 {
