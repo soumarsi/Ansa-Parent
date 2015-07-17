@@ -1042,4 +1042,12 @@
     _Image.contentMode=UIViewContentModeScaleAspectFill;
     
 }
+- (IBAction)pushTootherChld:(id)sender {
+    
+    
+    NSLog(@"test");
+    DashboardViewcontroller *obj=[self.storyboard instantiateViewControllerWithIdentifier:@"childList"];
+    [self.navigationController pushViewController:obj animated:YES];
+    
+}
 @end

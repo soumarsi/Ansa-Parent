@@ -35,6 +35,8 @@
 		5A7F82E51AF9F536001328AB /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F82D31AF9F536001328AB /* UIImageView+HighlightedWebCache.m */; };
 		5A7F82E61AF9F536001328AB /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F82D51AF9F536001328AB /* UIImageView+WebCache.m */; };
 		5A7F82E71AF9F536001328AB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F82D71AF9F536001328AB /* UIView+WebCacheOperation.m */; };
+		5A8141B21B58CE5F00C935BE /* ChildList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8141B11B58CE5F00C935BE /* ChildList.m */; };
+		5A8141B51B58CED600C935BE /* childCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8141B41B58CED600C935BE /* childCell.m */; };
 		F90B1D381B05B55200C929B1 /* NSString+MADanishLang.m in Sources */ = {isa = PBXBuildFile; fileRef = F90B1D351B05B55200C929B1 /* NSString+MADanishLang.m */; };
 		F90B1D391B05B55200C929B1 /* NSString+MAfaraoselang.m in Sources */ = {isa = PBXBuildFile; fileRef = F90B1D371B05B55200C929B1 /* NSString+MAfaraoselang.m */; };
 		F91946A91AFC6F4B0098A864 /* SjukurViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91946A81AFC6F4B0098A864 /* SjukurViewController.m */; };
@@ -115,6 +117,10 @@
 		5A7F82D51AF9F536001328AB /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		5A7F82D61AF9F536001328AB /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		5A7F82D71AF9F536001328AB /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		5A8141B01B58CE5F00C935BE /* ChildList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildList.h; sourceTree = "<group>"; };
+		5A8141B11B58CE5F00C935BE /* ChildList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildList.m; sourceTree = "<group>"; };
+		5A8141B31B58CED600C935BE /* childCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = childCell.h; sourceTree = "<group>"; };
+		5A8141B41B58CED600C935BE /* childCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = childCell.m; sourceTree = "<group>"; };
 		F90B1D341B05B55200C929B1 /* NSString+MADanishLang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MADanishLang.h"; sourceTree = "<group>"; };
 		F90B1D351B05B55200C929B1 /* NSString+MADanishLang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MADanishLang.m"; sourceTree = "<group>"; };
 		F90B1D361B05B55200C929B1 /* NSString+MAfaraoselang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MAfaraoselang.h"; sourceTree = "<group>"; };
@@ -341,6 +347,8 @@
 				F9FC567C1B008DAF009C6534 /* AlbumViewController.m */,
 				F92BB6861B020E8600387AB7 /* PasswordViewController.h */,
 				F92BB6871B020E8600387AB7 /* PasswordViewController.m */,
+				5A8141B01B58CE5F00C935BE /* ChildList.h */,
+				5A8141B11B58CE5F00C935BE /* ChildList.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -364,6 +372,8 @@
 				F91946AB1AFCC3830098A864 /* DashboardTableViewCell.m */,
 				2CAF582E1AFE3F890080FF83 /* FreeTableViewCell.h */,
 				2CAF582F1AFE3F890080FF83 /* FreeTableViewCell.m */,
+				5A8141B31B58CED600C935BE /* childCell.h */,
+				5A8141B41B58CED600C935BE /* childCell.m */,
 			);
 			name = "Tablevie Cell classes";
 			sourceTree = "<group>";
@@ -469,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8141B21B58CE5F00C935BE /* ChildList.m in Sources */,
 				5A7F82E61AF9F536001328AB /* UIImageView+WebCache.m in Sources */,
 				5A7F82E21AF9F536001328AB /* UIImage+GIF.m in Sources */,
 				5A7F82DB1AF9F536001328AB /* SDWebImageCompat.m in Sources */,
@@ -492,6 +503,7 @@
 				F924FBD21AFB6A4400FC1256 /* Left.m in Sources */,
 				5A7F82DC1AF9F536001328AB /* SDWebImageDecoder.m in Sources */,
 				5A7F82841AF89F94001328AB /* ViewController.m in Sources */,
+				5A8141B51B58CED600C935BE /* childCell.m in Sources */,
 				F9FC567D1B008DAF009C6534 /* AlbumViewController.m in Sources */,
 				5A7F82E51AF9F536001328AB /* UIImageView+HighlightedWebCache.m in Sources */,
 				5A7F82D91AF9F536001328AB /* NSData+ImageContentType.m in Sources */,

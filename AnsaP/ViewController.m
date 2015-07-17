@@ -10,6 +10,7 @@
 #import "TGGlobalClass.h"
 #import "UIFont+Allfont.h"
 #import "Ansap.pch"
+#import <UIKit/UIKit.h>
 @interface ViewController ()<UITextFieldDelegate>
 {
     TGGlobalClass *GlobalClass;
@@ -33,6 +34,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *selectKindergardenLbl;
 
+@property (strong, nonatomic) IBOutlet UIView *demoviewGray;
+- (IBAction)openPicker:(id)sender;
 
 
 
@@ -47,22 +50,34 @@
     GlobalClass = [[TGGlobalClass alloc]init];
     
     kinderArray=[[NSMutableArray alloc]init];
-    
+    selectedIndex = 0;
     _selectKindergardenBtn.layer.opacity=0.9;
+    kinderPicekr.delegate = self;
     
     
-    
-    kinderPicekr.hidden=YES;
-    
+    kinderPickerBackView.hidden=YES;
+    self.demoviewGray.hidden = YES;
 //   _email.text = @"aljo@olivant.fo";
 //  _password.text = @"123456";
     //[_email becomeFirstResponder];
+}
+-(void)viewDidAppear:(BOOL)animated{
+
+    [super viewDidAppear:YES];
+    
+    
+    [self kindergardenFunc];
+
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
  
     [textField resignFirstResponder];
     return YES;
     
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    kinderPickerBackView.hidden = YES;
+    self.demoviewGray.hidden = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -71,7 +86,7 @@
 
 
 
-- (IBAction)kindergardenFunc:(id)sender
+- (void)kindergardenFunc
 {
     
     [GlobalClass GlobalDict:[NSString stringWithFormat:@"%@allkinder.php",App_Domain_Url] Globalstr:@"array" Withblock:^(id result, NSError *error) {
@@ -82,7 +97,8 @@
         
             kinderArray=[result mutableCopy];
             
-            NSLog(@"Kindergarden list.... %@",kinderArray);
+            NSLog(@"Kindergarden list.... %lu",(unsigned long)kinderArray.count);
+            [kinderPicekr reloadAllComponents];
         
         }
         
@@ -93,14 +109,48 @@
     
 }
 
--(void)openKinderPicker
+
+#pragma all the delegate of pickerview
+
+- (void)pickerView:(UIPickerView *)pV didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
 
+    selectedIndex = row;
     
+    NSLog(@"......%d",selectedIndex);
     
-
-
 }
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+
+    return 60.0f;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return kinderArray.count;
+}
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* tView = (UILabel*)view;
+    if (!tView)
+    {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont boldSystemFontOfSize:25]];
+        tView.textAlignment = NSTextAlignmentCenter;
+        
+        
+    }
+    tView.text=[[kinderArray objectAtIndex:row] objectForKey:@"site_name"];
+    return tView;
+}
+
+
+#pragma picker view delegate close
 
 
 - (IBAction)Login:(id)sender
@@ -125,12 +175,22 @@
             [_password setValue:[UIColor redColor]forKeyPath:@"_placeholderLabel.textColor"];
             [_password setValue:[UIFont Helvitica] forKeyPath:@"_placeholderLabel.font"];
             
-        }else{
+        }else if ([self.selectKinderLbl.text isEqualToString:@"Select Kindergarden"])
+        {
+            [_spinn setHidden:YES];
+            self.selectKinderLbl.text = selectKinder;
+            self.selectKinderLbl.textColor = [UIColor redColor];
+            self.selectKinderLbl.font = [UIFont boldSystemFontOfSize:18];
+         
+            
+        }
+        
+        else{
             
             [_email resignFirstResponder];
             [_password resignFirstResponder];
         
-            [GlobalClass GlobalDict:[NSString stringWithFormat:@"%@login_parent.php?email=%@&password=%@",App_Domain_Url,[_email.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],_password.text] Globalstr:@"array" Withblock:^(id result, NSError *error) {
+            [GlobalClass GlobalDict:[NSString stringWithFormat:@"%@login_parent_multi.php?email=%@&password=%@&subAdminId=%ld",App_Domain_Url,[_email.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],_password.text,selectedKinderId] Globalstr:@"array" Withblock:^(id result, NSError *error) {
                
                 if (result)
                 {
@@ -187,5 +247,44 @@
         }
 
     }
+}
+- (IBAction)openPicker:(id)sender {
+    
+    [_email resignFirstResponder];
+    [_password resignFirstResponder];
+    
+    
+    if(kinderPickerBackView.hidden == NO){
+       
+            kinderPickerBackView.hidden=YES;
+            self.demoviewGray.hidden = YES;
+         
+       
+    
+    }else{
+ 
+            
+            kinderPickerBackView.hidden=NO;
+            self.demoviewGray.hidden = NO;
+        
+    }
+    
+
+}
+- (IBAction)clickedOnOk:(id)sender {
+    
+    selectedKinderId = [[[kinderArray objectAtIndex:selectedIndex] objectForKey:@"id"] integerValue];
+    kinderPickerBackView.hidden=YES;
+    self.demoviewGray.hidden = YES;
+    
+    self.selectKinderLbl.text = [[kinderArray objectAtIndex:selectedIndex] objectForKey:@"site_name"];
+    
+    
+}
+
+- (IBAction)clickedOnCancel:(id)sender {
+    
+    kinderPickerBackView.hidden=YES;
+    self.demoviewGray.hidden = YES;
 }
 @end

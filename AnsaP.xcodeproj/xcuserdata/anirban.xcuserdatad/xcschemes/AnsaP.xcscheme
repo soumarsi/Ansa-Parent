@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A7F82771AF89F94001328AB"
-               BuildableName = "AnsaP.app"
+               BuildableName = "Ansa-Foreldur.app"
                BlueprintName = "AnsaP"
                ReferencedContainer = "container:AnsaP.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A7F82771AF89F94001328AB"
-            BuildableName = "AnsaP.app"
+            BuildableName = "Ansa-Foreldur.app"
             BlueprintName = "AnsaP"
             ReferencedContainer = "container:AnsaP.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A7F82771AF89F94001328AB"
-            BuildableName = "AnsaP.app"
+            BuildableName = "Ansa-Foreldur.app"
             BlueprintName = "AnsaP"
             ReferencedContainer = "container:AnsaP.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5A7F82771AF89F94001328AB"
-            BuildableName = "AnsaP.app"
+            BuildableName = "Ansa-Foreldur.app"
             BlueprintName = "AnsaP"
             ReferencedContainer = "container:AnsaP.xcodeproj">
          </BuildableReference>

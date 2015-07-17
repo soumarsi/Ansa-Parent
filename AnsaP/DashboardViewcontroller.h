@@ -31,6 +31,7 @@
     NSMutableDictionary *Data_dictionary;
     
 }
+- (IBAction)pushTootherChld:(id)sender;
 @property (strong, nonatomic) IBOutlet UIScrollView *Page_Scroll;
 @property (strong, nonatomic) IBOutlet UIView *Footer_view;
 - (IBAction)Down_arrow_btn:(id)sender;

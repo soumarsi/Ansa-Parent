@@ -18,7 +18,8 @@
 
 #define check_username @"Please enter valid email"
 #define check_password @"Please enter valid password"
-#define App_Domain_Url @"http://ansa.fo/iosapp/"
+#define selectKinder @"Select one kindergarden"
+#define App_Domain_Url @"http://mobil.vega.fo.linux56.unoeuro-server.com/iosappParent/"
 #define App_Image_Url @"https://ansa.fo/upload/albums/normal/"
 #define check_internet_title @"sorry!"
 #define check_internet @"please check your internet connection"
