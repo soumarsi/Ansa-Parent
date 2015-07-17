@@ -86,7 +86,7 @@
     
     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"gender"] isEqualToString:@"M"])
     {
-         [_profile_image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://ansa.fo/upload/children_photo/thumb/%@",Photo_link]] placeholderImage:[UIImage imageNamed:@"maleimage"] options:/* DISABLES CODE */ (0) == 0?SDWebImageRefreshCached : 0];
+         [_profile_image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://ansa.fo/upload/children_photo/thumb/%@",Photo_link]] placeholderImage:[UIImage imageNamed:@"placeholder"] options:/* DISABLES CODE */ (0) == 0?SDWebImageRefreshCached : 0];
     }
     
     else

@@ -21,6 +21,7 @@
 #define selectKinder @"Select one kindergarden"
 #define App_Domain_Url @"http://mobil.vega.fo.linux56.unoeuro-server.com/iosappParent/"
 #define App_Image_Url @"https://ansa.fo/upload/albums/normal/"
+#define App_Image_Url2 @"http://mobil.vega.fo.linux56.unoeuro-server.com/upload/children_photo/"
 #define check_internet_title @"sorry!"
 #define check_internet @"please check your internet connection"
 #define DebugLog(...) while(0)

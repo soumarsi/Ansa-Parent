@@ -7,15 +7,16 @@
 //
 
 #import "ChildList.h"
-#import "childCell.h"
+//#import "childCell.h"
 #import "TGGlobalClass.h"
 #import "Ansap.pch"
-@interface ChildList (){
+#import "UIImageView+WebCache.h"
+@interface ChildList ()<UITableViewDataSource,UITableViewDelegate>
+{
  
     TGGlobalClass *globalobj;
     NSMutableArray *Data_array;
 }
-@property (strong, nonatomic) IBOutlet UITableView *childTbl;
 
 @end
 
@@ -23,51 +24,156 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _childTbl.delegate=self;
+    _childTbl.dataSource=self;
+    
+   NSString  *pid= [[NSUserDefaults standardUserDefaults] objectForKey:@"id"];
     
     globalobj=[[TGGlobalClass alloc]init];
-    [globalobj GlobalDict:[NSString stringWithFormat:@"%@childList.php?pid=38",App_Domain_Url]Globalstr:@"array" Withblock:^(id result, NSError *error) {
+    [globalobj GlobalDict:[NSString stringWithFormat:@"%@childList.php?pid=%@",App_Domain_Url,pid]Globalstr:@"array" Withblock:^(id result, NSError *error) {
         
         
         Data_array=[[NSMutableArray alloc]init];
         Data_array=[result mutableCopy];
         
-        NSLog(@".....%@",[[Data_array objectAtIndex:0] objectForKey:@"name"]);
-        self.childTbl.frame = CGRectMake(self.childTbl.frame.origin.x, self.childTbl.frame.origin.y, self.childTbl.frame.size.width, (Data_array.count*80));
-        [self.childTbl reloadData];
+        NSLog(@"getting cheld data >>>>> %@",Data_array);
+        
+        [_childTbl reloadData];
         
          }];
+    
+    
+   getindex= [[NSUserDefaults standardUserDefaults] integerForKey:@"check_tick_id"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return 80;
-}
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return Data_array.count;
+    return [Data_array count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"childCell";
-    childCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *simpleTableIdentifier = @"Cell";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    
+    UIImageView *child_image=[[UIImageView alloc]initWithFrame:CGRectMake(10,10,70,70)];
+    child_image.layer.cornerRadius=70.0f/2;
+    child_image.clipsToBounds=YES;
+    [cell addSubview:child_image];
+    
+    NSLog(@">>>>>>>> %@",[NSString stringWithFormat:@"%@%@",App_Image_Url2,[[Data_array objectAtIndex:indexPath.row]objectForKey:@"photo"]]);
+    
+    [child_image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",App_Image_Url2,[[Data_array objectAtIndex:indexPath.row]objectForKey:@"photo"]]] placeholderImage:[UIImage imageNamed:@"placeholder"] options:/* DISABLES CODE */ (0) == 0?SDWebImageRefreshCached : 0];
+
+    
+    UILabel *child_name=[[UILabel alloc]initWithFrame:CGRectMake(child_image.frame.origin.x+90, 15,200, 40)];
+    child_name.font=[UIFont fontWithName:@"MyriadPro" size:15];
+    child_name.text=[NSString stringWithFormat:@"%@",[[Data_array objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    child_name.textColor=[UIColor darkGrayColor];
+    child_name.textAlignment=NSTextAlignmentLeft;
+    [cell addSubview:child_name];
     
     
-    [cell.cellbtn setTitle:[NSString stringWithFormat:@"%@",[[Data_array objectAtIndex:indexPath.row] objectForKey:@"name"]] forState:UIControlStateNormal];
+    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0,99,[UIScreen mainScreen].bounds.size.width,1)];
+    line.backgroundColor=[[UIColor grayColor]colorWithAlphaComponent:0.8f];
+    [cell addSubview:line];
     
+    
+    UIImageView *tickimage=[[UIImageView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-50,15,42,42)];
+   
+    tickimage.tag=011;
+    [cell addSubview:tickimage];
+    
+    if (indexPath.row==getindex)
+    {
+         tickimage.image=[UIImage imageNamed:@"tick2"];
+    }
+    else
+    {
+         tickimage.image=[UIImage imageNamed:@""];
+    }
+    
+    
+    cell.backgroundColor=[UIColor clearColor];
+    cell.selectionStyle=NO;
     
     return cell;
     
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+   NSUserDefaults *UserData = [[NSUserDefaults alloc]init];
+    
+    NSMutableDictionary *child_data=[[NSMutableDictionary alloc]init];
+    child_data=[[Data_array objectAtIndex:indexPath.row] mutableCopy];
+    
+    NSLog(@">>>>>>>>###### %@",child_data);
+    
+    [UserData setObject:[child_data objectForKey:@"room_id"] forKey:@"room_id"];
+    [UserData setObject:[child_data objectForKey:@"id"] forKey:@"child_id"];
+    [UserData setObject:[child_data objectForKey:@"name"] forKey:@"child_name"];
+    [UserData setObject:[child_data objectForKey:@"photo"] forKey:@"photo"];
+    [UserData synchronize];
+    
+    UITableViewCell *getcell=(UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    NSArray *subArray=[getcell subviews];
+    
+    for (UIImageView *img in subArray)
+        
+    {
+        
+        if ([img isKindOfClass:[UIImageView class]])
+            
+        {
+            if (img.tag==011)
+            {
+                
+            img.image=[UIImage imageNamed:@"tick2"];
+                     
+            getindex=indexPath.row;
+                     
+           [_childTbl reloadData];
+      
+        [UserData  setInteger:getindex forKey:@"check_tick_id"];
+        [UserData synchronize];
+                
+    [self performSelector:@selector(gotoMainPage) withObject:nil afterDelay:0.5];
+               
+            }
+            
+            
+            
+        }
+        
+        
+    }
+
+    
+    
+
+
+}
+
+
+-(void)gotoMainPage
+{
+    ChildList *obj = [self.storyboard instantiateViewControllerWithIdentifier:@"landing"];
+    [self.navigationController pushViewController:obj animated:YES];
+}
 /*
 #pragma mark - Navigation
 
@@ -78,4 +184,8 @@
 }
 */
 
+- (IBAction)back_button:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

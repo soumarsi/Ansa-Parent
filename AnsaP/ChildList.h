@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ChildList : UIViewController
+{
+    NSInteger getindex;
+}
 
+@property (weak, nonatomic) IBOutlet UITableView *childTbl;
+- (IBAction)back_button:(id)sender;
 @end
