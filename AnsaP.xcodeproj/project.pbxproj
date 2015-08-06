@@ -583,7 +583,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4b0745d1-e3c8-4662-a9f9-f9d0dd91ecae";
+				PROVISIONING_PROFILE = "fa16900a-3aed-4a1b-9149-f0487cd58f2e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -622,7 +622,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4b0745d1-e3c8-4662-a9f9-f9d0dd91ecae";
+				PROVISIONING_PROFILE = "fa16900a-3aed-4a1b-9149-f0487cd58f2e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -640,7 +640,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Ansa-Foreldur";
-				PROVISIONING_PROFILE = "4b0745d1-e3c8-4662-a9f9-f9d0dd91ecae";
+				PROVISIONING_PROFILE = "fa16900a-3aed-4a1b-9149-f0487cd58f2e";
 			};
 			name = Debug;
 		};
@@ -656,7 +656,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Ansa-Foreldur";
-				PROVISIONING_PROFILE = "4b0745d1-e3c8-4662-a9f9-f9d0dd91ecae";
+				PROVISIONING_PROFILE = "fa16900a-3aed-4a1b-9149-f0487cd58f2e";
 			};
 			name = Release;
 		};

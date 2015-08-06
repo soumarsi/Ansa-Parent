@@ -12,7 +12,7 @@
 
 +(NSString *)LogoutF
 {
-    return [NSString stringWithFormat:@"Rita út"];
+    return [NSString stringWithFormat:@"Útrita"];
 }
 +(NSString *) RegistrationF
 {

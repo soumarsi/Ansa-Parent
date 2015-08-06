@@ -17,6 +17,7 @@
     TGGlobalClass *globalobj;
     NSMutableArray *Data_array;
 }
+@property (weak, nonatomic) IBOutlet UILabel *Children;
 
 @end
 
@@ -27,6 +28,9 @@
     
     _childTbl.delegate=self;
     _childTbl.dataSource=self;
+    
+    
+    _Children.text = [NSString BornF];
     
    NSString  *pid= [[NSUserDefaults standardUserDefaults] objectForKey:@"id"];
     
